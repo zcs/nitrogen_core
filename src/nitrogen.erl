@@ -4,7 +4,7 @@
 
 -module (nitrogen).
 -export ([init_request/2, handler/2, run/0, start_link/1, start_link/2,
-         do/1, out/1, do_mochiweb/2]).
+         do/1, out/1, do_mochiweb/2, get_templateroot/0]).
 
 init_request(RequestBridge, ResponseBridge) ->
     wf_context:init_context(RequestBridge, ResponseBridge).
@@ -108,3 +108,7 @@ do_mochiweb(Info, Mod) ->
     nitrogen:init_request(RequestBridge, ResponseBridge),
     Mod:handlers(),
     nitrogen:run().
+
+get_templateroot() ->
+    Mod = handling_module(),
+    Mod:get_templateroot().

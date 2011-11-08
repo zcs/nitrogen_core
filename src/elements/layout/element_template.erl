@@ -64,9 +64,7 @@ get_cached_template(File) ->
     end.
 
 parse_template(File) ->
-    % TODO - Templateroot
-    % File1 = filename:join(nitrogen:get_templateroot(), File),
-    File1 = File,
+    File1 = filename:join(nitrogen:get_templateroot(), File),
     case file:read_file(File1) of
         {ok, B} -> parse_template1(B);
         _ ->
